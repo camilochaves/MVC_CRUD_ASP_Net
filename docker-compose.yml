@@ -1,0 +1,78 @@
+version: "3.8"
+
+services: 
+
+  MySql:
+    image: mysql:5.7
+    container_name: "DbMySql"
+    hostname: "DbMySql"
+    restart: always
+    command: --default-authentication-plugin=mysql_native_password
+    environment:
+      - MYSQL_DATABASE=ZUP
+      # You don't have to use root, but you can if you like
+      - MYSQL_USER=user
+      - MYSQL_PASSWORD=password
+      - MYSQL_ROOT_PASSWORD=password
+      - character-set-server=utf8mb4
+      - collation-server=utf8mb4_unicode_ci
+    ports:
+      - "3306:3306"
+    expose: 
+      - "3306"
+    volumes:
+      - db:/var/lib/mysql
+    networks:
+      - host
+  
+  phpMyAdmin:
+    image: phpmyadmin/phpmyadmin
+    container_name: phpMyAdmin
+    depends_on:
+      - MySql
+    environment:
+      PMA_HOST: DbMySql
+      PMA_PORT: 3306
+      PMA_ARBITRARY: 1
+    restart: always
+    ports:
+      - 8081:80
+    networks:
+      - host
+
+  WebApp:
+    image: zup_webapp:latest
+    build:
+      context: ./
+      dockerfile: ./.Dockerfile      
+    container_name: "WebApp"
+    restart: always
+    tty: true
+    ports:
+      - "5000:80"
+      - "5001:443"
+    expose:
+      - "80"
+      - "443"
+    environment:
+      - ServerStringConnection=server=DbMySql
+      - ASPNETCORE_ENVIRONMENT=Development
+      - ASPNETCORE_URLS=https://+;http://+
+      - ASPNETCORE_HTTPS_PORT=5001
+      - ASPNETCORE_HTTP_PORT=5000
+      #the following password must match the password that you used when the certificate were created!
+      - ASPNETCORE_Kestrel__Certificates__Default__Password=someRandomPassword
+      - ASPNETCORE_Kestrel__Certificates__Default__Path=/https/webapp.pfx
+    volumes:
+      - ~/.aspnet/https:/https/
+    depends_on:
+      - MySql
+    networks:
+      - host
+
+volumes:
+  db:
+
+networks:
+  host:
+    driver: bridge

@@ -1,0 +1,12 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>net5.0</TargetFramework>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\C.Dll.Application\Application.csproj" />
+    <ProjectReference Include="..\External.Dll.SwissKnife\SwissKnife.csproj" />
+  </ItemGroup>
+
+</Project>

@@ -1,0 +1,666 @@
+{
+	"info": {
+		"_postman_id": "7416e8ad-b839-45e3-a05e-0c2ea02b492d",
+		"name": "ZUP",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Employee Controller",
+			"item": [
+				{
+					"name": "Add Employee",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"FirstName\":\"Camilo\",\r\n    \"LastName\":\"Chaves\",\r\n    \"Email\":\"chaves.camilo@gmail.com\",\r\n    \"Password\":\"123\",\r\n    \"ConfirmPassword\":123,\r\n    \"EmployeeNumber\":5345\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://localhost:5001/Employee/AsyncAdd",
+							"protocol": "https",
+							"host": [
+								"localhost"
+							],
+							"port": "5001",
+							"path": [
+								"Employee",
+								"AsyncAdd"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "Add Employee",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"FirstName\":\"Camilo\",\r\n    \"LastName\":\"Chaves\",\r\n    \"Email\":\"chaves.camilo@gmail.com\",\r\n    \"Password\":\"123\",\r\n    \"ConfirmPassword\":123,\r\n    \"EmployeeNumber\":5345\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "https://localhost:5001/Employee/AsyncAdd",
+									"protocol": "https",
+									"host": [
+										"localhost"
+									],
+									"port": "5001",
+									"path": [
+										"Employee",
+										"AsyncAdd"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Date",
+									"value": "Thu, 18 Nov 2021 02:29:07 GMT"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Server",
+									"value": "Kestrel"
+								},
+								{
+									"key": "Content-Length",
+									"value": "254"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"employee\": {\n        \"id\": 1,\n        \"firstName\": \"Camilo\",\n        \"lastName\": \"Chaves\",\n        \"email\": \"chaves.camilo@gmail.com\",\n        \"password\": \"nUwvdZY0tEBY7hJSzS4FJQ==\",\n        \"employeeNumber\": 5345,\n        \"phone\": null,\n        \"mobilePhone\": null,\n        \"leaderId\": null,\n        \"leader\": null\n    },\n    \"msg\": \"Employee added succesfully!\"\n}"
+						}
+					]
+				},
+				{
+					"name": "Get All Employees",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Access-Token",
+								"value": "Vm9WTUNNRWhVenpMUG8wWUZ5NjJCYUNaV2RDcFRaZ0xWTWV5eDl2Vm43RT0lY2hhdmVzLmNhbWlsb0BnbWFpbC5jb20lMTEvMTgvMjAyMQ==",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "https://localhost:5001/Employee/AsyncGetAll",
+							"protocol": "https",
+							"host": [
+								"localhost"
+							],
+							"port": "5001",
+							"path": [
+								"Employee",
+								"AsyncGetAll"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "Get All Employees",
+							"originalRequest": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Access-Token",
+										"value": "Vm9WTUNNRWhVenpMUG8wWUZ5NjJCYUNaV2RDcFRaZ0xWTWV5eDl2Vm43RT0lY2hhdmVzLmNhbWlsb0BnbWFpbC5jb20lMTEvMTgvMjAyMQ==",
+										"type": "text"
+									}
+								],
+								"url": {
+									"raw": "https://localhost:5001/Employee/AsyncGetAll",
+									"protocol": "https",
+									"host": [
+										"localhost"
+									],
+									"port": "5001",
+									"path": [
+										"Employee",
+										"AsyncGetAll"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Date",
+									"value": "Thu, 18 Nov 2021 02:38:20 GMT"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Server",
+									"value": "Kestrel"
+								},
+								{
+									"key": "Content-Length",
+									"value": "207"
+								}
+							],
+							"cookie": [],
+							"body": "[\n    {\n        \"id\": 1,\n        \"firstName\": \"Camilo\",\n        \"lastName\": \"Chaves\",\n        \"email\": \"chaves.camilo@gmail.com\",\n        \"password\": \"nUwvdZY0tEBY7hJSzS4FJQ==\",\n        \"employeeNumber\": 5345,\n        \"phone\": null,\n        \"mobilePhone\": null,\n        \"leaderId\": null,\n        \"leader\": null\n    }\n]"
+						}
+					]
+				},
+				{
+					"name": "Update Employee",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Access-Token",
+								"value": "Vm9WTUNNRWhVenpMUG8wWUZ5NjJCYUNaV2RDcFRaZ0xWTWV5eDl2Vm43RT0lY2hhdmVzLmNhbWlsb0BnbWFpbC5jb20lMTEvMTgvMjAyMQ==",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"Email\":\"darthmaul.deathstar.com\",\r\n    \"Password\":123,\r\n    \"ConfirmPassword\":124,\r\n    \"LastName\":\"Mr\",\r\n    \"Phone\":123456789993333333339999,\r\n    \"MobilePhone\":12345678910111233333313,\r\n    \"LeaderId\":0\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://localhost:5001/Employee/AsyncUpdate?id=1",
+							"protocol": "https",
+							"host": [
+								"localhost"
+							],
+							"port": "5001",
+							"path": [
+								"Employee",
+								"AsyncUpdate"
+							],
+							"query": [
+								{
+									"key": "id",
+									"value": "1"
+								}
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "Update Employee",
+							"originalRequest": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Access-Token",
+										"value": "Vm9WTUNNRWhVenpMUG8wWUZ5NjJCYUNaV2RDcFRaZ0xWTWV5eDl2Vm43RT0lY2hhdmVzLmNhbWlsb0BnbWFpbC5jb20lMTEvMTgvMjAyMQ==",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"Email\":\"darthmaul.deathstar.com\",\r\n    \"Password\":123,\r\n    \"ConfirmPassword\":124,\r\n    \"LastName\":\"Mr\",\r\n    \"Phone\":123456789993333333339999,\r\n    \"MobilePhone\":12345678910111233333313,\r\n    \"LeaderId\":0\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "https://localhost:5001/Employee/AsyncUpdate?id=1",
+									"protocol": "https",
+									"host": [
+										"localhost"
+									],
+									"port": "5001",
+									"path": [
+										"Employee",
+										"AsyncUpdate"
+									],
+									"query": [
+										{
+											"key": "id",
+											"value": "1"
+										}
+									]
+								}
+							},
+							"status": "Bad Request",
+							"code": 400,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Date",
+									"value": "Thu, 18 Nov 2021 02:54:32 GMT"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/problem+json; charset=utf-8"
+								},
+								{
+									"key": "Server",
+									"value": "Kestrel"
+								},
+								{
+									"key": "Content-Length",
+									"value": "705"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"errors\": {\n        \"Email\": [\n            \"The Email field is not a valid e-mail address.\"\n        ],\n        \"Phone\": [\n            \"The field Phone must be a string with a maximum length of 15.\"\n        ],\n        \"LastName\": [\n            \"The field LastName must be a string with a minimum length of 3 and a maximum length of 10.\"\n        ],\n        \"Leader Id\": [\n            \"Employee with Id 0 does not exist in the database! Therefore, he cannot be assigned as a Leader!\"\n        ],\n        \"MobilePhone\": [\n            \"The field MobilePhone must be a string with a maximum length of 15.\"\n        ],\n        \"ConfirmPassword\": [\n            \"Password & confirm password does not match\"\n        ]\n    },\n    \"type\": \"https://tools.ietf.org/html/rfc7231#section-6.5.1\",\n    \"title\": \"One or more validation errors occurred.\",\n    \"status\": 400,\n    \"traceId\": \"00-43233dfd81207540b2655575639ce1b3-f0959988a3fbe04a-00\"\n}"
+						}
+					]
+				},
+				{
+					"name": "Get With Id",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Access-Token",
+								"value": "Vm9WTUNNRWhVenpMUG8wWUZ5NjJCYUNaV2RDcFRaZ0xWTWV5eDl2Vm43RT0lY2hhdmVzLmNhbWlsb0BnbWFpbC5jb20lMTEvMTgvMjAyMQ==",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "https://localhost:5001/Employee/AsyncGetById?id=1",
+							"protocol": "https",
+							"host": [
+								"localhost"
+							],
+							"port": "5001",
+							"path": [
+								"Employee",
+								"AsyncGetById"
+							],
+							"query": [
+								{
+									"key": "id",
+									"value": "1"
+								}
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "Get With Id",
+							"originalRequest": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Access-Token",
+										"value": "Vm9WTUNNRWhVenpMUG8wWUZ5NjJCYUNaV2RDcFRaZ0xWTWV5eDl2Vm43RT0lY2hhdmVzLmNhbWlsb0BnbWFpbC5jb20lMTEvMTgvMjAyMQ==",
+										"type": "text"
+									}
+								],
+								"url": {
+									"raw": "https://localhost:5001/Employee/AsyncGetById?id=1",
+									"protocol": "https",
+									"host": [
+										"localhost"
+									],
+									"port": "5001",
+									"path": [
+										"Employee",
+										"AsyncGetById"
+									],
+									"query": [
+										{
+											"key": "id",
+											"value": "1"
+										}
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Date",
+									"value": "Thu, 18 Nov 2021 02:38:52 GMT"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Server",
+									"value": "Kestrel"
+								},
+								{
+									"key": "Content-Length",
+									"value": "205"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"id\": 1,\n    \"firstName\": \"Camilo\",\n    \"lastName\": \"Chaves\",\n    \"email\": \"chaves.camilo@gmail.com\",\n    \"password\": \"nUwvdZY0tEBY7hJSzS4FJQ==\",\n    \"employeeNumber\": 5345,\n    \"phone\": null,\n    \"mobilePhone\": null,\n    \"leaderId\": null,\n    \"leader\": null\n}"
+						}
+					]
+				},
+				{
+					"name": "Get With Email",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Access-Token",
+								"value": "Vm9WTUNNRWhVenpMUG8wWUZ5NjJCYUNaV2RDcFRaZ0xWTWV5eDl2Vm43RT0lY2hhdmVzLmNhbWlsb0BnbWFpbC5jb20lMTEvMTgvMjAyMQ==",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "https://localhost:5001/Employee/AsyncGetByEmail?email=chaves.camilo@gmail.com",
+							"protocol": "https",
+							"host": [
+								"localhost"
+							],
+							"port": "5001",
+							"path": [
+								"Employee",
+								"AsyncGetByEmail"
+							],
+							"query": [
+								{
+									"key": "email",
+									"value": "chaves.camilo@gmail.com"
+								}
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "Get With Email",
+							"originalRequest": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Access-Token",
+										"value": "Vm9WTUNNRWhVenpMUG8wWUZ5NjJCYUNaV2RDcFRaZ0xWTWV5eDl2Vm43RT0lY2hhdmVzLmNhbWlsb0BnbWFpbC5jb20lMTEvMTgvMjAyMQ==",
+										"type": "text"
+									}
+								],
+								"url": {
+									"raw": "https://localhost:5001/Employee/AsyncGetByEmail?email=chaves.camilo@gmail.com",
+									"protocol": "https",
+									"host": [
+										"localhost"
+									],
+									"port": "5001",
+									"path": [
+										"Employee",
+										"AsyncGetByEmail"
+									],
+									"query": [
+										{
+											"key": "email",
+											"value": "chaves.camilo@gmail.com"
+										}
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Date",
+									"value": "Thu, 18 Nov 2021 02:39:52 GMT"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Server",
+									"value": "Kestrel"
+								},
+								{
+									"key": "Content-Length",
+									"value": "205"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"id\": 1,\n    \"firstName\": \"Camilo\",\n    \"lastName\": \"Chaves\",\n    \"email\": \"chaves.camilo@gmail.com\",\n    \"password\": \"nUwvdZY0tEBY7hJSzS4FJQ==\",\n    \"employeeNumber\": 5345,\n    \"phone\": null,\n    \"mobilePhone\": null,\n    \"leaderId\": null,\n    \"leader\": null\n}"
+						}
+					]
+				},
+				{
+					"name": "Delete with Id",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Access-Token",
+								"value": "Vm9WTUNNRWhVenpMUG8wWUZ5NjJCYUNaV2RDcFRaZ0xWTWV5eDl2Vm43RT0lY2hhdmVzLmNhbWlsb0BnbWFpbC5jb20lMTEvMTgvMjAyMQ==",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "https://localhost:5001/Employee/AsyncDeleteById?id=1",
+							"protocol": "https",
+							"host": [
+								"localhost"
+							],
+							"port": "5001",
+							"path": [
+								"Employee",
+								"AsyncDeleteById"
+							],
+							"query": [
+								{
+									"key": "id",
+									"value": "1"
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Access Controller",
+			"item": [
+				{
+					"name": "Login and Return JWT ID Token",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"Email\":\"darthvader@gmail.com\",\r\n    \"Password\":\"123\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://localhost:5001/Access/LoginAndReturnToken",
+							"protocol": "https",
+							"host": [
+								"localhost"
+							],
+							"port": "5001",
+							"path": [
+								"Access",
+								"LoginAndReturnToken"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "Login and Return JWT ID Token",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"Email\":\"darthvader@gmail.com\",\r\n    \"Password\":\"123\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "https://localhost:5001/Access/LoginAndReturnToken",
+									"protocol": "https",
+									"host": [
+										"localhost"
+									],
+									"port": "5001",
+									"path": [
+										"Access",
+										"LoginAndReturnToken"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Date",
+									"value": "Mon, 22 Nov 2021 17:57:13 GMT"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Server",
+									"value": "Kestrel"
+								},
+								{
+									"key": "Transfer-Encoding",
+									"value": "chunked"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"statusCode\": 200,\n    \"success\": true,\n    \"data\": \"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1bmlxdWVfbmFtZSI6ImRhcnRodmFkZXJAZ21haWwuY29tIiwidWlkIjoiNSIsImJhZGdlTnVtYmVyIjoiMSIsImxlYWRlcklkIjoiIiwibmJmIjoxNjM3NjAzODMzLCJleHAiOjE2Mzc2MzI2MzMsImlhdCI6MTYzNzYwMzgzMywiaXNzIjoiUmVhc29uIFN5c3RlbXMifQ.XjGhmd_Tw4kEsFdoD9ME5zTblq09G1Zwvaz-wIEjbTY\",\n    \"errors\": null\n}"
+						}
+					]
+				},
+				{
+					"name": "Request Access Token",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1bmlxdWVfbmFtZSI6ImNoYXZlcy5jYW1pbG9AZ21haWwuY29tIiwidWlkIjoiMSIsImJhZGdlTnVtYmVyIjoiNTM0NSIsImxlYWRlcklkIjoiIiwibmJmIjoxNjM3MjAyNTgxLCJleHAiOjE2MzcyMzEzODEsImlhdCI6MTYzNzIwMjU4MSwiaXNzIjoiUmVhc29uIFN5c3RlbXMifQ.bDYcfZI1_Nk0viR6niilmX0MnWiFRFUxlGb-fe8VJo4",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "https://localhost:5001/Access/RequestAccessToken",
+							"protocol": "https",
+							"host": [
+								"localhost"
+							],
+							"port": "5001",
+							"path": [
+								"Access",
+								"RequestAccessToken"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "Request Access Token",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "https://localhost:5001/Access/RequestAccessToken",
+									"protocol": "https",
+									"host": [
+										"localhost"
+									],
+									"port": "5001",
+									"path": [
+										"Access",
+										"RequestAccessToken"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "plain",
+							"header": [
+								{
+									"key": "Date",
+									"value": "Thu, 18 Nov 2021 02:36:24 GMT"
+								},
+								{
+									"key": "Content-Type",
+									"value": "text/plain; charset=utf-8"
+								},
+								{
+									"key": "Server",
+									"value": "Kestrel"
+								},
+								{
+									"key": "Transfer-Encoding",
+									"value": "chunked"
+								}
+							],
+							"cookie": [],
+							"body": "Vm9WTUNNRWhVenpMUG8wWUZ5NjJCYUNaV2RDcFRaZ0xWTWV5eDl2Vm43RT0lY2hhdmVzLmNhbWlsb0BnbWFpbC5jb20lMTEvMTgvMjAyMQ=="
+						}
+					]
+				},
+				{
+					"name": "Get Logged User using Access-Token",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Access-Token",
+								"value": "Vm9WTUNNRWhVenpMUG8wWUZ5NjJCYUNaV2RDcFRaZ0xWTWV5eDl2Vm43RT0lY2hhdmVzLmNhbWlsb0BnbWFpbC5jb20lMTEvMTgvMjAyMQ==",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "https://localhost:5001/Access/GetLoggedUserEmailWithAccessToken",
+							"protocol": "https",
+							"host": [
+								"localhost"
+							],
+							"port": "5001",
+							"path": [
+								"Access",
+								"GetLoggedUserEmailWithAccessToken"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		}
+	]
+}
