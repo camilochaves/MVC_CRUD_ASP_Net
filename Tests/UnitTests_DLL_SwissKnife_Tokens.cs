@@ -12,21 +12,25 @@ namespace Tests
     {
 
         [TestMethod]
-        [DataRow("username", "SomeLongSecretKey", "SomeLongSaltWithAtLeast8Bits", "ip", "useragent")]
+        [DataRow("username", "SomeLongSecretKey", "SomeLongSaltWithAtLeast8Bits", "ip", "useragent",1, 1)]
+        [DataRow("username", "SomeLongSecretKey", "SomeLongSaltWithAtLeast8Bits", "ip", "useragent",0, 2)]
         public void SwissKnife_CreateAndValidateAccessToken(
-            string username, string secretkey, string salt, string ip, string userAgent
-        )
+            string username,
+            string secretkey,
+            string salt,
+            string ip,
+            string userAgent,
+            int validMinutes,
+            int pass)
         {
             //Act
 
             //Arrange
-            var access_token = TokenTools.CreateAccessToken(username, secretkey, salt, ip, userAgent);
+            var access_token = TokenTools.CreateAccessToken(username, secretkey, salt, ip, userAgent, validMinutes);
             var isValidAccessToken = TokenTools.IsValidAccessToken(access_token, ip, userAgent, secretkey, salt);
-            var parts = TokenTools.DecodeAccessTokenAndSeparateParts(access_token);
-            var decodedUser = parts[1];
             //Assert
-            Assert.IsTrue(isValidAccessToken);
-            Assert.IsTrue(decodedUser == username);
+            if (pass==1) Assert.IsTrue(isValidAccessToken);
+            if (pass==2) Assert.IsFalse(isValidAccessToken);            
         }
 
         [TestMethod]

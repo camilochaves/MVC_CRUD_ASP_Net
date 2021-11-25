@@ -1,20 +1,21 @@
 using System;
 using System.Security.Cryptography;
 using System.Text;
+using Microsoft.CodeAnalysis.CSharp.Syntax;
 
 namespace ReasonSystems.DLL.SwissKnife
 {
     public static partial class TokenTools
     {
         private const string _alg = "HmacSHA256";
-        public static string CreateAccessToken(string username, string secretKey, string salt, string ip, string userAgent)
+        public static string CreateAccessToken(string username, string secretKey, string salt, string ip, string userAgent, int minutesValid = 10)
         {
             string textToEncrypt = string.Join("%", new string[] { username, ip, userAgent });
             using HMAC hmac = HMACSHA256.Create(_alg);
             hmac.Key = Encoding.UTF8.GetBytes(GetHashedPassword(secretKey, salt));
             hmac.ComputeHash(Encoding.UTF8.GetBytes(textToEncrypt));
             string hashedCode = Convert.ToBase64String(hmac.Hash);
-            string hashedParams = string.Join("%", new string[] { username, DateTime.Now.ToShortDateString().ToString() });
+            string hashedParams = string.Join("%", new string[] { username, DateTime.UtcNow.AddMinutes(minutesValid).ToString() });
             return string.Join("%", hashedCode, hashedParams).EncodeTo64();
         }
 
@@ -48,20 +49,25 @@ namespace ReasonSystems.DLL.SwissKnife
                 if (parts.Length != 3) return false;
 
                 // Get the hash message, username, and timestamp.
-                string hash = parts[0];
-                string username = parts[1];
-                string timeConstraint = parts[2];
+                string hashedAccessToken = parts[0];
+                string user = parts[1];
+                string validUntil = parts[2];
+                DateTime validUntilTime = DateTime.Parse(validUntil, styles: System.Globalization.DateTimeStyles.AdjustToUniversal);
+                             
+                //1st test: Hashed content must match when created from userName, IP and userAgent
+                var computedToken = CreateAccessToken(user, secretKey, salt, ip, userAgent);
+                var hashedComputedToken = DecodeAccessTokenAndSeparateParts(computedToken)[0];
+                if(hashedAccessToken != hashedComputedToken) return false;
 
-                //Still to be implemented: Time constraint
-    
-                var computedToken = CreateAccessToken(username, secretKey, salt, ip??"", userAgent??"");
-                result = computedToken == access_token;
+                //2nd test: Time constraint
+                if(validUntilTime.CompareTo(DateTime.UtcNow)<0) return false;
             }
             catch
             {
+                return false;
             }
 
-            return result;
+            return true;
         }
     }
 }
