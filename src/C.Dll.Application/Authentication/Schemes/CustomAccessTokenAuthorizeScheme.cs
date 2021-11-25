@@ -48,7 +48,7 @@ namespace ApplicationWebMVC.Authentication
                 Request.Host.Host,
                 Request.Headers["User-Agent"].ToString(),
                 _secretsHandler.GetFromConfig("AES_SecretKey"),
-                _secretsHandler.GetFromConfig("AES_Salt")           
+                _secretsHandler.GetFromConfig("AES_Salt")   
                 );
 
             if (!isValid) Task.FromResult(AuthenticateResult.Fail("Access-Token Not Valid!"));

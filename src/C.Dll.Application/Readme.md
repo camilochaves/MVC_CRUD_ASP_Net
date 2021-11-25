@@ -1,6 +1,7 @@
 # Application Layer
-  
-  Contains:
+
+Contains:
+
 - View Models
 - Input Models
 - Application Services

@@ -1,6 +1,7 @@
 # MVC_CRUD
 
 ## Important Steps  
+
 Step 1: Execute File 1st_EXECUTE_THIS.bat  
 Step 2: Create Environment variable on windows called ServerStringConnection with value "server=localhost"  
 Step 3: Execute file 2nd_UpdateMigrations.bat  
@@ -10,6 +11,7 @@ Step 3: Execute file 2nd_UpdateMigrations.bat
 This is an App create to Manage employees from a ficticious Company where:  
 
 Employees have the following properties:
+
 - Name and Surname (required);
 - E-mail (valid and required);
 - employee number (unique and required);
@@ -18,6 +20,7 @@ Employees have the following properties:
 - Password (must be stored encrypted)
   
 On this Template:
+
 - API´s were developed using ASP.NET CORE and ASP.NET CORE MVC
 - Domain Entities have CRUD 
 - Database is MySQL (in container)
@@ -26,6 +29,7 @@ On this Template:
   Note(You will need an Id_Token before requesting an Access_Token)
   
 Extra  
+
 - You can find unit tests and integration tests in the Tests Folder
 - POSTMAN collection is provided for testing purposes
 - Patterns Used: Repository
