@@ -30,7 +30,7 @@ namespace Infra.EFCore.Configurations
           .IsRequired()
           .HasMaxLength(150);
 
-      b.Property(x=>x.LeaderId);
+      b.Property(x=>x.LeaderId).IsRequired(false);
 
       b.Property(x=>x.Phone)
           .HasMaxLength(15);
@@ -42,11 +42,16 @@ namespace Infra.EFCore.Configurations
           .IsRequired()
           .HasMaxLength(100);
 
+      b.Property(x=>x.Status).IsRequired(true);
+
       b.HasIndex(x=>x.LeaderId);
 
-      b.HasOne(x => x.Leader).WithMany().HasForeignKey("LeaderId").OnDelete(DeleteBehavior.Cascade);
+      b.HasOne(x => x.Leader)
+        .WithOne()
+        .HasForeignKey<Employee>(b=>b.LeaderId)
+        .OnDelete(DeleteBehavior.Cascade);
 
-      b.Navigation("Leader");
+      b.Navigation(o=>o.Leader).IsRequired(false);
     }
 
   }

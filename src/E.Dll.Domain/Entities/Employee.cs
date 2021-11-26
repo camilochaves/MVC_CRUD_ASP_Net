@@ -16,7 +16,7 @@ namespace Domain.Entities
       Email = email;
       Password = password;
       EmployeeNumber = employeeNumber;
-      this.status = EmployeeStatus.CREATED;
+      this.Status = EmployeeStatus.CREATED;
     }
     //[Key]
     public int Id { get; set; }
@@ -48,6 +48,6 @@ namespace Domain.Entities
 
     //[ForeignKey("LeaderId")]
     public Employee? Leader { get; set; }
-    public EmployeeStatus status { get; set; }
+    public EmployeeStatus Status { get; set; } = EmployeeStatus.CREATED;
   }
 }

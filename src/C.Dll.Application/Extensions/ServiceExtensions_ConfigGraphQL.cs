@@ -15,7 +15,7 @@ namespace ApplicationWebMVC.Extensions
           .AddMutationType<BaseMutationType>()
           .AddTypeExtension<EmployeeMutations>()         
           .AddTypeExtension<AccessControlMutation>() 
-          .AddSubscriptionType<BaseSubscriptionType>() //together with app.UseWebSockets();
+          .AddSubscriptionType<BaseSubscriptionType>()
           .AddTypeExtension<EmployeeSubscriptionType>()
           .AddProjections()
           .AddFiltering()

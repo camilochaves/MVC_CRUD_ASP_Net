@@ -42,7 +42,6 @@ namespace ReasonSystems.DLL.SwissKnife
         //private const int _expirationMinutes = 10;
         public static bool IsValidAccessToken(string access_token, string ip, string userAgent, string secretKey, string salt)
         {
-            bool result = false;
             try
             {
                 string[] parts = DecodeAccessTokenAndSeparateParts(access_token);
@@ -52,22 +51,29 @@ namespace ReasonSystems.DLL.SwissKnife
                 string hashedAccessToken = parts[0];
                 string user = parts[1];
                 string validUntil = parts[2];
-                DateTime validUntilTime = DateTime.Parse(validUntil, styles: System.Globalization.DateTimeStyles.AdjustToUniversal);
-                             
-                //1st test: Hashed content must match when created from userName, IP and userAgent
+                
+                //1st test: Date from String must be valid
+                if(!DateTime.TryParse(validUntil, out DateTime validUntilTime))
+                {
+                    return false;
+                }
+
+                //2nd test: Hashed content must match when created from userName, IP and userAgent
                 var computedToken = CreateAccessToken(user, secretKey, salt, ip, userAgent);
                 var hashedComputedToken = DecodeAccessTokenAndSeparateParts(computedToken)[0];
                 if(hashedAccessToken != hashedComputedToken) return false;
 
-                //2nd test: Time constraint
+                //3rd test: Time constraint
                 if(validUntilTime.CompareTo(DateTime.UtcNow)<0) return false;
+                
+                return true;
             }
             catch
             {
                 return false;
             }
 
-            return true;
+            
         }
     }
 }

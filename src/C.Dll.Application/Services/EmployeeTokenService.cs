@@ -1,3 +1,4 @@
+using System;
 using System.Collections.Generic;
 using System.Security.Claims;
 using System.Security.Principal;
@@ -58,6 +59,7 @@ namespace Application.Services
 
     public CustomServiceResultWrapper<string> ExchangeIdTokenForAccessToken(string idToken)
     {
+      try{
       var JWT_SecretKey = _secrets.GetFromConfig("JWT_SecretKey");
       var AES_SecretKey = _secrets.GetFromConfig("AES_SecretKey");
       var AES_Salt = _secrets.GetFromConfig("AES_Salt");
@@ -91,6 +93,14 @@ namespace Application.Services
         Success = true,
         Data = access_token
       };
+      } catch (Exception ex)
+      {
+        return new CustomServiceResultWrapper<string>()
+        {
+          Success = false,
+          Errors = new List<string>(){ex.Message}
+        };
+      }
     }
 
     //Header must contain <key,value> Authorization: "Bearer someIdToken"

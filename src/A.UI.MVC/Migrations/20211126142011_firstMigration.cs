@@ -3,7 +3,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace CleanMVC.Migrations
 {
-    public partial class init : Migration
+    public partial class firstMigration : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -47,7 +47,8 @@ namespace CleanMVC.Migrations
             migrationBuilder.CreateIndex(
                 name: "IX_Employees_LeaderId",
                 table: "Employees",
-                column: "LeaderId");
+                column: "LeaderId",
+                unique: true);
         }
 
         protected override void Down(MigrationBuilder migrationBuilder)

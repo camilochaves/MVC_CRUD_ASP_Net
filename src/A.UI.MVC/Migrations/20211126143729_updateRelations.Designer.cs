@@ -9,8 +9,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace CleanMVC.Migrations
 {
     [DbContext(typeof(ApplicationContext))]
-    [Migration("20211122231345_init")]
-    partial class init
+    [Migration("20211126143729_updateRelations")]
+    partial class updateRelations
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -64,7 +64,8 @@ namespace CleanMVC.Migrations
 
                     b.HasKey("Id");
 
-                    b.HasIndex("LeaderId");
+                    b.HasIndex("LeaderId")
+                        .IsUnique();
 
                     b.ToTable("Employees");
                 });
@@ -72,8 +73,8 @@ namespace CleanMVC.Migrations
             modelBuilder.Entity("Domain.Entities.Employee", b =>
                 {
                     b.HasOne("Domain.Entities.Employee", "Leader")
-                        .WithMany()
-                        .HasForeignKey("LeaderId")
+                        .WithOne()
+                        .HasForeignKey("Domain.Entities.Employee", "LeaderId")
                         .OnDelete(DeleteBehavior.Cascade);
 
                     b.Navigation("Leader");
