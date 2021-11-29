@@ -27,7 +27,8 @@ namespace ApplicationWebMVC.Extensions
            ServerVersion.AutoDetect(connectionString),
            builder => 
            {
-             builder.EnableRetryOnFailure(); 
+             builder.EnableRetryOnFailure(5);
+             builder.CommandTimeout(10);
              builder.MigrationsAssembly("CleanMVC");
            }
         ).LogTo(Console.WriteLine, new[]{DbLoggerCategory.Database.Command.Name});
