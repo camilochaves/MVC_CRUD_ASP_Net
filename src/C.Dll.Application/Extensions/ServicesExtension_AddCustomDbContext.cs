@@ -25,7 +25,11 @@ namespace ApplicationWebMVC.Extensions
         //options.UseInMemoryDatabase("Test.db");
         options.UseMySql(connectionString,
            ServerVersion.AutoDetect(connectionString),
-           b => b.MigrationsAssembly("CleanMVC")
+           builder => 
+           {
+             builder.EnableRetryOnFailure(); 
+             builder.MigrationsAssembly("CleanMVC");
+           }
         ).LogTo(Console.WriteLine, new[]{DbLoggerCategory.Database.Command.Name});
       });
 
