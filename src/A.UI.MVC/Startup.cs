@@ -34,6 +34,7 @@ namespace Application
       services.ConfigCustomValidators();
       services.ConfigGraphQL();
       services.AutoWrapperConfig();
+      services.AddStackExchangeRedis(Configuration);
       services.Configure<KestrelServerOptions>(options =>
         {
           options.AllowSynchronousIO = true;

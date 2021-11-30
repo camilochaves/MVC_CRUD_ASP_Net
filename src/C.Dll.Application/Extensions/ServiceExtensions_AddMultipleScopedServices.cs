@@ -22,7 +22,7 @@ namespace Application.Extensions
       services.AddScoped<IEmployeeService, EmployeeService>();
       services.AddScoped<ITokenService<LoginInputModel>, EmployeeTokenService>();
       services.AddScoped<IUnitOfWork, UnitOfWork>();
-
+      services.AddScoped<RedisService>();
       return services;
     }
   }
