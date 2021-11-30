@@ -2,7 +2,7 @@ using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.OpenApi.Models;
 
-namespace ApplicationWebMVC.Extensions
+namespace Application.Extensions
 {
   public static partial class ServiceExtentions
     {

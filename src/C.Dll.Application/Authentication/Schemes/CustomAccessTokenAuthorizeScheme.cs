@@ -7,7 +7,7 @@ using Microsoft.Extensions.Logging;
 using Microsoft.Extensions.Options;
 using ReasonSystems.DLL.SwissKnife;
 
-namespace ApplicationWebMVC.Authentication
+namespace Application.Authentication
 {
     public class ValidateAccessTokenSchemeOptions : AuthenticationSchemeOptions
     { 

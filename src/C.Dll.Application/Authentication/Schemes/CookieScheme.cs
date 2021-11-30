@@ -4,7 +4,7 @@ using Microsoft.AspNetCore.Authentication;
 using Microsoft.AspNetCore.Authentication.Cookies;
 using Microsoft.Extensions.DependencyInjection;
 
-namespace ApplicationWebMVC.Authentication
+namespace Application.Authentication
 {
   public static partial class StartUpAuthentication
   {

@@ -1,6 +1,6 @@
 using Microsoft.AspNetCore.Authentication;
 
-namespace ApplicationWebMVC.Authentication
+namespace Application.Authentication
 {
      public static partial class StartUpAuthentication
     {

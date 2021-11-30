@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 using Application.InputModels;
 using Application.Services.Interfaces;
 using Application.Wrappers.Attributes;
-using ApplicationWebMVC.Controllers.Shared;
+using Application.Controllers.Shared;
 using Domain.Entities;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Authorization;
@@ -16,7 +16,7 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.CodeAnalysis.CSharp.Syntax;
 using ReasonSystems.DLL.SwissKnife;
 
-namespace ApplicationWebMVC.Controllers
+namespace Application.Controllers
 {
 
   [Route("[controller]")]

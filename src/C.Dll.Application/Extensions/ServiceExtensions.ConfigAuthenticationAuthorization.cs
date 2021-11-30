@@ -1,4 +1,4 @@
-using ApplicationWebMVC.Authentication;
+using Application.Authentication;
 using Microsoft.AspNetCore.Authentication.Cookies;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Authorization;

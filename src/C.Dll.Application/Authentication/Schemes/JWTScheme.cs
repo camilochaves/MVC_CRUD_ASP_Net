@@ -7,7 +7,7 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.IdentityModel.Tokens;
 using ReasonSystems.DLL.SwissKnife;
 
-namespace ApplicationWebMVC.Authentication
+namespace Application.Authentication
 {
   public static partial class StartUpAuthentication
     {

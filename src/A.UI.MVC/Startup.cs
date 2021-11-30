@@ -1,5 +1,5 @@
 using Application.Services;
-using ApplicationWebMVC.Extensions;
+using Application.Extensions;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Server.Kestrel.Core;
@@ -7,7 +7,7 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 
-namespace ApplicationWebMVC
+namespace Application
 {
   public class Startup
   {
@@ -48,11 +48,11 @@ namespace ApplicationWebMVC
       {
         app.UseDeveloperExceptionPage();
         app.UseSwagger();
-        app.UseSwaggerUI(c => c.SwaggerEndpoint("/swagger/v1/swagger.json", "Zup App v1"));
+        app.UseSwaggerUI(c => c.SwaggerEndpoint("/swagger/v1/swagger.json", "Reason Systems App v1"));
       }
       else
       {
-        app.UseExceptionHandler("/Home/Error");
+        //app.UseExceptionHandler("/Home/Error");
         // The default HSTS value is 30 days. You may want to change this for production 
         //scenarios, see https://aka.ms/aspnetcore-hsts.
         app.UseHsts();
@@ -65,6 +65,8 @@ namespace ApplicationWebMVC
       app.UseWebSockets();
 
       app.UseAuthorization();
+
+      app.ConfigureCustomExceptionMiddleware();
 
       app.UseEndpoints(endpoints =>
       {

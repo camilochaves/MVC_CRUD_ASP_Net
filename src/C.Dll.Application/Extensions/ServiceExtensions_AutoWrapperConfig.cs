@@ -1,9 +1,9 @@
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.DependencyInjection;
 
-//Import package AutoWrapper.Core
+//Import Nuget package AutoWrapper.Core
 
-namespace ApplicationWebMVC.Extensions
+namespace Application.Extensions
 {
   public static partial class ServiceExtentions
   {

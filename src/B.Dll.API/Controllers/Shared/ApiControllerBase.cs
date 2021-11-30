@@ -5,7 +5,7 @@ using Application.Wrappers.Response;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.IdentityModel.Tokens;
 
-namespace ApplicationWebMVC.Controllers.Shared
+namespace Application.Controllers.Shared
 {
   [ApiController]
   public abstract class ApiControllerBase: ControllerBase 

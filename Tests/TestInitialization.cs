@@ -15,7 +15,7 @@ namespace Tests
   [TestClass]
   public partial class IntegrationTestsDLLApiJson
   {
-    private WebApplicationFactory<ApplicationWebMVC.Startup>? _factory;
+    private WebApplicationFactory<Application.Startup>? _factory;
     private HttpClient? _client;
     private static readonly string _serverAddr = "https://localhost:5001";
     private static int testNumber = 0;
@@ -34,7 +34,7 @@ namespace Tests
     //Constructor
     public IntegrationTestsDLLApiJson()
     {
-      this._factory = new WebApplicationFactory<ApplicationWebMVC.Startup>()
+      this._factory = new WebApplicationFactory<Application.Startup>()
         .WithWebHostBuilder(builder =>
         {
           builder.UseSetting("https_port", "5001").UseEnvironment("Testing");

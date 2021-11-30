@@ -3,7 +3,7 @@ using Domain.Entities;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
 
-namespace ApplicationWebMVC.Controllers
+namespace Application.Controllers
 {
     public class HomeController : Controller
     {

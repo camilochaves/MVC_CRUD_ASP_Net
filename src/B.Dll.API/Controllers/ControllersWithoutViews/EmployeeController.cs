@@ -4,11 +4,11 @@ using System.Threading.Tasks;
 using Application.InputModels;
 using Application.Services.Interfaces;
 using Application.Wrappers.Attributes;
-using ApplicationWebMVC.Controllers.Shared;
+using Application.Controllers.Shared;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
-namespace ApplicationWebMVC.Controllers
+namespace Application.Controllers
 {
   [Route("[controller]")]
   public class EmployeeController : ApiControllerBase

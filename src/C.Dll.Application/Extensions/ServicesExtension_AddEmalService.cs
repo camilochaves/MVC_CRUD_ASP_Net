@@ -5,7 +5,7 @@ using NETCore.MailKit.Extensions;
 using NETCore.MailKit.Infrastructure.Internal;
 using ReasonSystems.DLL.SwissKnife;
 
-namespace ApplicationWebMVC.Extensions
+namespace Application.Extensions
 {
   public static partial class ServiceExtentions
   {

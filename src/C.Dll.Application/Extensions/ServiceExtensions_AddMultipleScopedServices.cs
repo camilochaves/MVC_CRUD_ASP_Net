@@ -7,7 +7,7 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using ReasonSystems.DLL.SwissKnife;
 
-namespace ApplicationWebMVC.Extensions
+namespace Application.Extensions
 {
   public static partial class ServiceExtentions
   {
