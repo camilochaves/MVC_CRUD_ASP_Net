@@ -27,7 +27,8 @@ services:
     image: rediscommander/redis-commander:latest
     restart: always
     environment:
-      - REDIS_HOSTS=redis
+      - REDIS_HOSTS=Redis
+      - PORT=8085
     ports:
       - "8085:8085"
     expose:
