@@ -75,10 +75,10 @@ namespace Application.Services
         public async Task<CustomServiceResultWrapper<IEnumerable<Employee>>> GetAllAsync()
         {
             var employees = await _redis.Get<IEnumerable<Employee>>("Employees");
-            if(!employees.IsNullOrEmpty()) 
+            if (!employees.IsNullOrEmpty())
                 return new CustomServiceResultWrapper<IEnumerable<Employee>>() { Data = employees };
-                
-            employees = await UnitOfWork.Employees.GetAllAsync();            
+
+            employees = await UnitOfWork.Employees.GetAllAsync();
             if (!employees.Any()) return new CustomServiceResultWrapper<IEnumerable<Employee>>()
             {
                 Success = true,
@@ -86,7 +86,7 @@ namespace Application.Services
             };
 
             //Save Data in Cache
-            await _redis.Set<IEnumerable<Employee>>("Employees",employees);
+            await _redis.Set<IEnumerable<Employee>>("Employees", employees);
 
             //Return Result
             return new CustomServiceResultWrapper<IEnumerable<Employee>>() { Data = employees };
@@ -94,7 +94,11 @@ namespace Application.Services
 
         public async Task<CustomServiceResultWrapper<Employee>> GetWithIdAsync(int id)
         {
-            var employee = await UnitOfWork.Employees.GetByIdAsync(id);
+            var employee = await _redis.Get<Employee>($"EmployeeId:{id}");
+            if (employee is not null)
+                return new CustomServiceResultWrapper<Employee>() { Data = employee };
+
+            employee = await UnitOfWork.Employees.GetByIdAsync(id);
             if (employee is null) return new CustomServiceResultWrapper<Employee>()
             {
                 Success = false,
@@ -102,11 +106,15 @@ namespace Application.Services
                 Errors = new List<string>() { $"Employee with Id {id} not Found!" }
             };
 
+            //Save Data in Cache
+            await _redis.Set<Employee>($"EmployeeId:{id}", employee);
+
             //Return result
             return new CustomServiceResultWrapper<Employee>() { Data = employee };
         }
         public async Task<CustomServiceResultWrapper<Employee>> RemoveWithIdAsync(int id)
         {
+            await _redis.Remove($"EmployeeId:{id}");
             var employee = await UnitOfWork.Employees.GetByIdAsync(id);
             if (employee is null) return new CustomServiceResultWrapper<Employee>()
             {
@@ -129,6 +137,7 @@ namespace Application.Services
         }
         public async Task<CustomServiceResultWrapper<Employee>> UpdateAsync(int id, EmployeeUpdateModel employeeUpdate)
         {
+            await _redis.Remove($"EmployeeId:{id}");
             var result = _updateModelValidator.Validate(employeeUpdate);
             if (!result.IsValid) return new CustomServiceResultWrapper<Employee>()
             {
@@ -159,7 +168,11 @@ namespace Application.Services
 
         public async Task<CustomServiceResultWrapper<Employee>> GetWithBadgeNumberAsync(int employeeNumber)
         {
-            var employee = await UnitOfWork.Employees.GetByBadgeNumberAsync(employeeNumber);
+            var employee = await _redis.Get<Employee>($"EmployeeBadge:{employeeNumber}");
+            if (employee is not null)
+                return new CustomServiceResultWrapper<Employee>() { Data = employee };
+
+            employee = await UnitOfWork.Employees.GetByBadgeNumberAsync(employeeNumber);
             if (employee is null) return new CustomServiceResultWrapper<Employee>()
             {
                 Success = false,
@@ -169,13 +182,19 @@ namespace Application.Services
                     $"Employee with Badge Number:{employeeNumber} not Found!"
                 }
             };
+            //Save in Redis
+            await _redis.Set<Employee>($"EmployeeBadge:{employeeNumber}", employee);
 
             return new CustomServiceResultWrapper<Employee>() { Data = employee };
         }
 
         public async Task<CustomServiceResultWrapper<Employee>> GetWithEmailAsync(string email)
         {
-            var employee = await UnitOfWork.Employees.GetByEmailAsync(email);
+            var employee = await _redis.Get<Employee>($"EmployeeEmail:{email}");
+            if (employee is not null)
+                return new CustomServiceResultWrapper<Employee>() { Data = employee };
+
+            employee = await UnitOfWork.Employees.GetByEmailAsync(email);
             if (employee is null) return new CustomServiceResultWrapper<Employee>()
             {
                 Success = false,
@@ -185,13 +204,17 @@ namespace Application.Services
                   $"Employee with Email: {email} not Found!"
                 }
             };
+            //Save in Cache
+            await _redis.Set<Employee>($"EmployeeEmail:{email}", employee);
 
             return new CustomServiceResultWrapper<Employee>() { Data = employee };
         }
 
         public async Task<CustomServiceResultWrapper<Employee>> AuthenticateEmployeeAsync(LoginInputModel _employeeLoginDTO)
         {
-            var employee = await UnitOfWork.Employees.GetByEmailAsync(_employeeLoginDTO.Email);
+            var employee = await _redis.Get<Employee>($"EmployeeEmail:{_employeeLoginDTO.Email}");
+            if (employee is null)
+                employee = await UnitOfWork.Employees.GetByEmailAsync(_employeeLoginDTO.Email);
             if (employee is null) return new CustomServiceResultWrapper<Employee>() { Errors = new List<string>() { "Email is Invalid!" } };
             var AES_Key = secretsHandler.GetFromConfig("AES_SecretKey");
             var salt = secretsHandler.GetFromConfig("AES_Salt");

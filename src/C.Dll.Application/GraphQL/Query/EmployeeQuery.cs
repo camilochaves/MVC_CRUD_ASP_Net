@@ -16,9 +16,9 @@ namespace Application.GraphQl
     // [UseFiltering]
     // [UseSorting]
     public async Task<CustomAPIResultWrapper<IEnumerable<Employee>>> GetEmployees(
-      [FromServices] IEmployeeService context)
+      [FromServices] IEmployeeService employeeService)
     {
-      var employeeWrapper = await context.GetAllAsync();
+      var employeeWrapper = await employeeService.GetAllAsync();
       if (!employeeWrapper.Success)
       {
         return new CustomAPIResultWrapper<IEnumerable<Employee>>
