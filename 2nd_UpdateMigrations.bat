@@ -1,15 +1,12 @@
 ECHO OFF
 cls
-echo IMPORTANT STEP!
-echo CREATE ENV VARIABLE CALLED ServerStringConnection="server=localhost" 
-echo only after variable is created you can continue the migration
-echo.
-echo IS THE VARIABLE ALREADY CREATED? (y/n)
+echo Do you want to execute first Migrations? (y/n)
 set /p Input=Enter Yes or No:
-if /I "%Input%"=="y" goto yes
+if /I "%Input%"=="y" goto yesExecuteMigrations
+if /I "%Input%"=="n" goto startBrowsers
 exit
 
-:yes
+:yesExecuteMigrations
 
 REM MIGRATIONS NEEDS DOTNET EF TOOL! THEREFORE, WILL CHECK FOR IT FIRST!
 dotnet ef && (goto dotnetEFisInstalled) || (goto failure)
@@ -31,6 +28,7 @@ timeout 5
 ECHO OFF
 dotnet ef database update --project src/A.UI.MVC
 
+:startBrowsers
 
 REM starting Microsoft Edge in PhpMyAdmin
 echo Opening microsoft edge on phpMyAdmin container
