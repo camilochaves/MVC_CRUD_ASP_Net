@@ -1,0 +1,32 @@
+version: "3.8"
+
+services:
+  WebApp:
+    image: zup_webapp:latest
+    build:
+      context: ./
+      dockerfile: ./.Dockerfile
+    container_name: "WebApp"
+    restart: always
+    tty: true
+    ports:
+      - "5000:80"
+      - "5001:443"
+    expose:
+      - "80"
+      - "443"
+    environment:
+      - ASPNETCORE_ENVIRONMENT=Development
+      - ASPNETCORE_URLS=https://+;http://+
+      - ASPNETCORE_HTTPS_PORT=5001
+      - ASPNETCORE_HTTP_PORT=5000
+      #the following password must match the password that you used when the certificate were created!
+      - ASPNETCORE_Kestrel__Certificates__Default__Password=someRandomPassword
+      - ASPNETCORE_Kestrel__Certificates__Default__Path=/https/webapp.pfx
+    volumes:
+      - ~/.aspnet/https:/https/
+    depends_on:
+      - Db
+      - Cache
+    networks:
+      - host

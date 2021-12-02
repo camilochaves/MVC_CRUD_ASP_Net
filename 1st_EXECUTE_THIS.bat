@@ -26,7 +26,7 @@ echo Press any key to start docker-compose for the containers...
 timeout 5
 cls
 ECHO ON
-docker-compose up -d
+docker-compose -f docker-compose.yml -f docker-compose-cache.yml -f docker-compose-db.yml -f docker-compose-webapp.yml up -d
 
 echo off
 echo.

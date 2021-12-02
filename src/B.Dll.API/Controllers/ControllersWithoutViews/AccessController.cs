@@ -1,39 +1,27 @@
-﻿
-using System.Collections.Generic;
-using System.Linq;
+﻿using System.Linq;
 using System.Net;
-using System.Security.Claims;
-using System.Security.Principal;
 using System.Threading.Tasks;
 using Application.InputModels;
 using Application.Services.Interfaces;
 using Application.Wrappers.Attributes;
 using Application.Controllers.Shared;
-using Domain.Entities;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.CodeAnalysis.CSharp.Syntax;
 using ReasonSystems.DLL.SwissKnife;
 
 namespace Application.Controllers
 {
 
-  [Route("[controller]")]
+    [Route("[controller]")]
   public class AccessController : ApiControllerBase
   {
-    private readonly SecretsHandlerService _secretsHandler;
-    private readonly IEmployeeService _employeeService;
     private readonly ITokenService<LoginInputModel> _tokenService;
 
     public AccessController(
-            SecretsHandlerService secretsHandler,
-            IEmployeeService employeeService,
             ITokenService<LoginInputModel> tokenService
         )
     {
-      this._secretsHandler = secretsHandler;
-      this._employeeService = employeeService;
       this._tokenService = tokenService;
     }
 

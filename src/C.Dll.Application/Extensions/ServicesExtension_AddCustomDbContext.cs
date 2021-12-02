@@ -14,10 +14,8 @@ namespace Application.Extensions
       using var scope = provider.CreateScope();
       var secretsHandler = scope.ServiceProvider.GetRequiredService<SecretsHandlerService>();
       var connectionString = secretsHandler.GetFromConfig("MySqlConnection");
-
-      //server is : server=localhost when running in windows
-      //            server=DbMySql when running in container
-      var server = SecretsHandlerService.GetFromEnv("ServerStringConnection");
+      var container = SecretsHandlerService.GetFromEnv("DOTNET_RUNNING_IN_CONTAINER");
+      var server = (container=="true") ? "server=DbMySql" : "server=localhost";
       connectionString = server + connectionString;
 
       services.AddPooledDbContextFactory<ApplicationContext>(options =>

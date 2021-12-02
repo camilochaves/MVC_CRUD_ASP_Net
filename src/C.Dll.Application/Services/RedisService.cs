@@ -15,25 +15,29 @@ namespace Application.Services
             this.cacheClient = cacheClient;
         }
 
-        public async Task<T> Get<T>(string key) where T:class
+        public async Task<T> Get<T>(string key, int db = 0) where T : class
         {
-            return await cacheClient.GetDbFromConfiguration().GetAsync<T>(key);
+            if (!this.cacheClient.GetDb(db).Database.IsConnected(key, StackExchange.Redis.CommandFlags.None)) return null;
+            return await cacheClient.GetDb(db).GetAsync<T>(key);
         }
 
-        public async Task<bool> Set<T>(string key, T value, int minutes = 2) where T:class
+        public async Task<bool> Set<T>(string key, T value, int minutes = 2, int db = 0) where T : class
         {
-            TimeSpan timespan = new(0,minutes, 0);
-            return await cacheClient.GetDbFromConfiguration().AddAsync<T>(key, value, timespan);
+            TimeSpan timespan = new(0, minutes, 0);
+            if (!this.cacheClient.GetDb(db).Database.IsConnected(key, StackExchange.Redis.CommandFlags.None)) return false;
+            return await cacheClient.GetDb(db).AddAsync<T>(key, value, timespan);
         }
 
-        public async Task<bool> Remove(string key)
+        public async Task<bool> Remove(string key, int db = 0)
         {
-            return await cacheClient.GetDbFromConfiguration().RemoveAsync(key);
+             if(!this.cacheClient.GetDb(db).Database.IsConnected(key, StackExchange.Redis.CommandFlags.None)) return false;
+            return await cacheClient.GetDb(db).RemoveAsync(key);
         }
 
-        public async Task<bool> UpdateExpiration(string key, DateTimeOffset dateTimeOffSet)
+        public async Task<bool> UpdateExpiration(string key, DateTimeOffset dateTimeOffSet, int db = 0)
         {
-            return await cacheClient.GetDbFromConfiguration().UpdateExpiryAsync(key, dateTimeOffSet);
+             if(!this.cacheClient.GetDb(db).Database.IsConnected(key, StackExchange.Redis.CommandFlags.None)) return false;
+            return await cacheClient.GetDb(db).UpdateExpiryAsync(key, dateTimeOffSet);
         }
     }
 }
