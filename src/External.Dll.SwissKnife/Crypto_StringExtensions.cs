@@ -3,17 +3,17 @@ using System.IO;
 using System.Security.Cryptography;
 using System.Text;
 
-namespace  ReasonSystems.DLL.SwissKnife
+namespace ReasonSystems.DLL.SwissKnife
 {
     public static partial class StringExtensions
     {
-           static public string EncryptAES256(this string source, string password, string salt)
+        static public string EncryptAES256(this string source, string password, string salt)
         {
             byte[] bytesToBeEncrypted = Encoding.UTF8.GetBytes(source);
             byte[] passwordBytes = Encoding.UTF8.GetBytes(password);
             byte[] saltBytes = Encoding.UTF8.GetBytes(salt);
             // The salt bytes must be at least 8 bytes.
-        
+
             // Hash the password with SHA256
             passwordBytes = SHA256.Create()
                                   .ComputeHash(passwordBytes);
@@ -44,7 +44,7 @@ namespace  ReasonSystems.DLL.SwissKnife
 
             passwordBytesdecrypt = SHA256.Create()
                                          .ComputeHash(passwordBytesdecrypt);
-            
+
             using MemoryStream ms = new();
             using RijndaelManaged AES = new();
 
@@ -58,9 +58,19 @@ namespace  ReasonSystems.DLL.SwissKnife
             using CryptoStream cs = new(ms, AES.CreateDecryptor(), CryptoStreamMode.Write);
             cs.Write(bytesToBeDecrypted, 0, bytesToBeDecrypted.Length);
             cs.Close();
-            
+
             byte[] decryptedBytes = ms.ToArray();
             return Encoding.UTF8.GetString(decryptedBytes);
         }
+
+        public static string CreateHash(this string password, string salt)
+        {
+            var passwordBytes = Encoding.UTF8.GetBytes(password);
+            var saltBytes = Encoding.UTF8.GetBytes(salt);
+            var byteResult = new Rfc2898DeriveBytes(passwordBytes, saltBytes, 10000);
+            return Convert.ToBase64String(byteResult.GetBytes(24));
+        }
+
+       
     }
 }
