@@ -17,7 +17,7 @@ namespace Tests
   {
     private WebApplicationFactory<Application.Startup>? _factory;
     private HttpClient? _client;
-    private static readonly string _serverAddr = "https://localhost:5001";
+    private static readonly string _serverAddr = "https://localhost";
     private static int testNumber = 0;
 
     private SecretsHandlerService? _secretsHandler;
