@@ -1,23 +1,23 @@
 # ToDo's
 
-- [x] ~~*DockerFile*~~
-- [x] ~~*Docker-Compose*~~
-- [x] ~~*Bat Scripts*~~
-- [x] ~~*MySql in container*~~
-- [x] ~~*IRepository Pattern*~~
-- [x] ~~*IUnitOfWork Pattern*~~
-- [x] ~~*Clean Architecture*~~
-- [x] ~~*EFCore Data Layer*~~
-- [x] ~~*Redis Cache*~~
-- [x] ~~*Redis Commander*~~
-- [] Dapper Data Layer
-- [] Rabbit Mq
-- [] Apacha Kafka
-- [] Kafka Connect
-- [] Logs to PostGres
-- [] Elastic Search
-- [] Kibana
-- [] Grafana
-- [] FrontEnd MVC
-- [] FrontEnd Blazor Server
-- [] FrontEnd Blazor Client
+- [X] ~~*DockerFile*~~
+- [X] ~~*Docker-Compose*~~
+- [X] ~~*Bat Scripts*~~
+- [X] ~~*MySql in container*~~
+- [X] ~~*IRepository Pattern*~~
+- [X] ~~*IUnitOfWork Pattern*~~
+- [X] ~~*Clean Architecture*~~
+- [X] ~~*EFCore Data Layer*~~
+- [X] ~~*Redis Cache*~~
+- [X] ~~*Redis Commander*~~
+- [ ] Dapper Data Layer
+- [ ] Rabbit Mq
+- [ ] Apacha Kafka
+- [ ] Kafka Connect
+- [ ] Logs to PostGres
+- [ ] Elastic Search
+- [ ] Kibana
+- [ ] Grafana
+- [ ] FrontEnd MVC
+- [ ] FrontEnd Blazor Server
+- [ ] FrontEnd Blazor Client
