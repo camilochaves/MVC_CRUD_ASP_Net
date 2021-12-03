@@ -9,7 +9,7 @@ namespace Application.Extensions
 {
   public static partial class ServiceExtentions
   {
-    public static IServiceCollection AddEmailService(
+    public static IServiceCollection ConfigEmailService(
         this IServiceCollection services)
     {
       var provider = services.BuildServiceProvider();

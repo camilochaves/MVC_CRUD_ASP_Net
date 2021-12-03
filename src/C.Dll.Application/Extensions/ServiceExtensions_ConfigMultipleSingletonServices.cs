@@ -4,7 +4,7 @@ namespace Application.Extensions
 {
   public static partial class ServiceExtentions
     {
-        public static IServiceCollection AddMultipleSingletonServices(this IServiceCollection services)
+        public static IServiceCollection ConfigMultipleSingletonServices(this IServiceCollection services)
         {         
           
             return services;

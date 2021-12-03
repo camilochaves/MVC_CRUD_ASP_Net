@@ -6,7 +6,7 @@ namespace Application.Extensions
 {
   public static partial class ServiceExtentions
     {
-        public static IServiceCollection AddCustomSwagger(this IServiceCollection services)
+        public static IServiceCollection ConfigCustomSwagger(this IServiceCollection services)
         {
             return services.AddSwaggerGen(c =>
             {

@@ -11,7 +11,7 @@ namespace Application.Extensions
 {
   public static partial class ServiceExtentions
   {
-    public static IServiceCollection AddMultipleScopedServices(this IServiceCollection services, IConfiguration configuration)
+    public static IServiceCollection ConfigMultipleScopedServices(this IServiceCollection services, IConfiguration configuration)
     {
       services.AddScoped(implementationFactory: provider =>
       {
@@ -23,6 +23,7 @@ namespace Application.Extensions
       services.AddScoped<ITokenService<LoginInputModel>, EmployeeTokenService>();
       services.AddScoped<IUnitOfWork, UnitOfWork>();
       services.AddScoped<RedisService>();
+      
       return services;
     }
   }

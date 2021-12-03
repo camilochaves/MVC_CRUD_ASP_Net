@@ -28,7 +28,7 @@ namespace Tests
         email: "chaves.camilo@gmail.com",
         password: "123",
         confirmPassword: "123",
-        employeeNumber: 13456
+        employeeNumber: 17
     );
 
     //Constructor

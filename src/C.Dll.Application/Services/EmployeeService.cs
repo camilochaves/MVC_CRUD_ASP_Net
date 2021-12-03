@@ -1,4 +1,3 @@
-using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
@@ -9,9 +8,7 @@ using AutoMapper;
 using Domain.Entities;
 using Domain.Interfaces;
 using FluentValidation;
-using Microsoft.Extensions.Caching.Distributed;
 using Microsoft.IdentityModel.Tokens;
-using Newtonsoft.Json;
 using ReasonSystems.DLL.SwissKnife;
 
 namespace Application.Services
@@ -63,10 +60,15 @@ namespace Application.Services
             var salt = secretsHandler.GetFromConfig("AES_Salt");
             employee.Password = employee.Password.EncryptAES256(AES_Key, salt);
 
-
             await UnitOfWork.Employees.AddAsync(employee);
             UnitOfWork.Complete();
-            employee = await UnitOfWork.Employees.GetByEmailAsync(employeeInput.Email);
+
+            employee = await _redis.Get<Employee>($"EmployeeEmail:{employeeInput.Email}");
+            if (employee is not null)
+            {
+                employee = await UnitOfWork.Employees.GetByEmailAsync(employeeInput.Email);
+                await _redis.Set<Employee>($"EmployeeEmail:{employeeInput.Email}", employee);
+            }
             return new CustomServiceResultWrapper<Employee>()
             {
                 Data = employee

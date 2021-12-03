@@ -66,7 +66,7 @@ namespace Application.Validations
       .Must(password =>
       {
         if (password.IsNullOrEmpty()) return true;
-        if (password.Length < 3) return false;
+        if (password?.Length < 3) return false;
         return true;
       }).WithMessage("Password cannot be less than 3 characteres!")
       .Equal(c=>c.ConfirmPassword).WithMessage("Password and ConfirmPassword must match");

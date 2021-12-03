@@ -1,6 +1,3 @@
-using System;
-using System.Linq;
-using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using ReasonSystems.DLL.SwissKnife;
 using StackExchange.Redis.Extensions.Core.Configuration;
@@ -10,7 +7,7 @@ namespace Application.Extensions
 {
     public static partial class ServiceExtentions
     {
-        public static IServiceCollection AddStackExchangeRedis(this IServiceCollection services, IConfiguration _configuration)
+        public static IServiceCollection ConfigStackExchangeRedis(this IServiceCollection services)
         {
             var container = SecretsHandlerService.GetFromEnv("DOTNET_RUNNING_IN_CONTAINER");
 
@@ -43,6 +40,7 @@ namespace Application.Extensions
 
                 return redisConfiguration;
             });
+
             return services;
         }
     }

@@ -26,7 +26,7 @@ namespace Application.Validations
         .MustAsync( async (leaderId, cancellation) => {
           if(leaderId==0 || leaderId is null) return true;
           var employee = await _ctx.Employees.GetByIdAsync(leaderId??0);
-          return (employee is not null);
+          return employee is not null;
         })
         .WithMessage("Add a Leader whose Id already exists in Database");
     }

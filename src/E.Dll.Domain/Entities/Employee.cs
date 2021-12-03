@@ -1,3 +1,4 @@
+using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 
@@ -49,5 +50,5 @@ namespace Domain.Entities
     //[ForeignKey("LeaderId")]
     public Employee? Leader { get; set; }
     public EmployeeStatus Status { get; set; } = EmployeeStatus.CREATED;
-  }
+    }
 }

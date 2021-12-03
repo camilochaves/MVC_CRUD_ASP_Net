@@ -93,7 +93,7 @@ namespace Tests
            email: "johnRambo@gmail.com",
            password: "123",
            confirmPassword: "123",
-           employeeNumber: 243365
+           employeeNumber: 2
        );
       //Employee above still needs to have LeaderId property. let[s Add a Leader and retrieve it back from Db to 
       //get his ID

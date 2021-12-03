@@ -8,7 +8,7 @@ namespace Application.Extensions
 {
   public static partial class ServiceExtentions
   {
-    public static IServiceCollection AddCustomDbContext(this IServiceCollection services)
+    public static IServiceCollection ConfigCustomDbContext(this IServiceCollection services)
     {
       var provider = services.BuildServiceProvider();
       using var scope = provider.CreateScope();

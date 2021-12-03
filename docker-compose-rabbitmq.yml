@@ -3,11 +3,15 @@ services:
   rabbitmq:
     image: rabbitmq:3-management-alpine
     container_name: 'rabbitmq'
+    hostname: rabbitmq
+    restart: on-failure
     ports:
         - 5672:5672
         - 15672:15672
     volumes:
-        - ~/rabbitmq/data/:/var/lib/rabbitmq/
-        - ~/rabbitmq/log/:/var/log/rabbitmq
+        #- ~/rabbitmq/etc/definitions.json:/etc/rabbitmq/definitions.json
+       # - ~/rabbitmq/etc/rabbitmq.conf:/etc/rabbitmq/rabbitmq.conf
+        - ~/rabbitmq/data:/var/lib/rabbitmq/mnesia/rabbit@rabbitmq
+        - ~/rabbitmq/logs:/var/log/rabbitmq/log
     networks:
       - host

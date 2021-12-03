@@ -5,7 +5,7 @@ namespace Application.Extensions
 {
     public static partial class AppExtensions
     {
-        public static void ConfigureCustomExceptionMiddleware(this IApplicationBuilder app)
+        public static void ConfigCustomExceptionMiddleware(this IApplicationBuilder app)
         {
             app.UseMiddleware<CustomErrorHandlingMiddleware>();
         }

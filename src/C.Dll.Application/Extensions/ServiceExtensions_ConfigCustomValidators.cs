@@ -22,7 +22,6 @@ namespace Application.Extensions
       //You can also register validators directly as a service
       services.AddTransient<IValidator<EmployeeUpdateModel>, EmployeeUpdateModelValidations>();
       services.AddTransient<IValidator<EmployeeInputModel>, EmployeeInputModelValidations>();
-      
       // services.AddTransient<IValidatorInterceptor, CustomValidatorInterceptor>();
 
       return services;
