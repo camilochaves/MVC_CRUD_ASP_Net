@@ -50,5 +50,23 @@ namespace Tests
             Assert.IsTrue(randomEncryptedPassword is not null);
         }
 
+        [TestMethod]
+        public void SwissKnife_HashPasswords_MustReturnUniqueHash()
+        {
+            //Arrange
+            var pass1 = "password1";
+            var pass2 = "password2";
+           
+            //Act
+            var hashA = pass1.CreateHash("This_is_a_unique_secret_Salt");
+            var hashB = pass1.CreateHash("This_is_a_unique_secret_Salt");
+            var hashC = pass2.CreateHash("This_is_another_unique_secret_Salt");
+
+            //Arrange
+            Assert.IsTrue(hashA==hashB);
+            Assert.IsTrue(hashA!=hashC);
+            Assert.IsTrue(hashB!=hashC);
+        }
+
     }
 }
