@@ -7,19 +7,18 @@ namespace Application.Services
     public class MassTransitRabbitMqService
     {
         private readonly IBus _bus;
-        private readonly Uri uri;
 
-        public MassTransitRabbitMqService(IBus bus, Uri uri)
+        public MassTransitRabbitMqService(IBus bus)
         {
             this._bus = bus;
-            this.uri = uri;
         }
 
-        public async Task Publish<T>(T model) where T:class
+        public async Task<bool> SendAsync<T>(T entity, string channel) where T:class
         {
-            var endpoint = await _bus.GetSendEndpoint(uri);
-            await endpoint.Send(model);
-            return;
+            var endpointAddr = new Uri("rabbitmq://localhost/"+channel);
+            var endpoint = await _bus.GetSendEndpoint(endpointAddr);
+            await endpoint.Send(entity);
+            return true;
         }
 
     }

@@ -36,6 +36,7 @@ namespace Application
             services.ConfigEmailService();
             services.ConfigGraphQL();
             services.ConfigStackExchangeRedis();
+            services.ConfigMassTransit();
 
             services.Configure<KestrelServerOptions>(options =>
               {
