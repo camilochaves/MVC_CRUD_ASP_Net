@@ -1,0 +1,1 @@
+docker-compose -f docker-compose.yml -f docker-compose-cache.yml -f docker-compose-db.yml -f docker-compose-kafka.yml -f docker-compose-rabbitmq.yml -f docker-compose-webapp.yml ps
