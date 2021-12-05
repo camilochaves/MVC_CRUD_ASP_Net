@@ -31,18 +31,34 @@ namespace Application.Extensions
     {
         public static IServiceCollection ConfigMassTransit(this IServiceCollection services)
         {
-            services.AddMassTransit(x =>
+            services.AddMassTransit(cfg =>
             {
-                x.AddBus(provider =>
+                //CONSUMER EXAMPLE
+                // cfg.AddConsumer<OrderConsumer>();
+                // cfg.UsingRabbitMq((context, config)=>
+                // {
+                //     config.ReceiveEndpoint("queue", e=>
+                //     {
+                //         e.ConfigureConsumer<OrderConsumer>(context);
+
+                //     });
+                //     config.Host("localhost", "/", h=>
+                //     {
+                //         h.Username("guest");
+                //         h.Password("guest");
+                //     });
+                // });
+
+                cfg.AddBus(provider =>
                 {
                     return Bus.Factory.CreateUsingRabbitMq(config =>
-                   {
-                       config.Host(new Uri("rabbitmq://localhost"), h =>
-                       {
-                           h.Username("guest");
-                           h.Password("guest");
-                       });
-                   });
+                    {
+                        config.Host(new Uri("rabbitmq://localhost"), h =>
+                        {
+                            h.Username("guest");
+                            h.Password("guest");
+                        });
+                    });
                 });
 
             });
