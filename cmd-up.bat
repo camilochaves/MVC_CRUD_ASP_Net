@@ -2,6 +2,7 @@ echo off
 cls
 echo.
 echo Start Scenarios:
+echo.
 echo 1: WebApp MySql Redis RabbitMq Kafka
 echo 2: MySql Redis RabbitMq Kafka
 echo 3: MySql Redis RabbitMq
@@ -10,13 +11,15 @@ echo 5: Redis Kafka
 echo 6: Redis
 echo 7: RabbitMq
 echo 8: Kafka
-echo Select Scenario: (1 to 3)
+echo Select Scenario: (1 to 8)
+echo.
 set /p SCENARIO=Enter scenario number 
 
 echo off
 2>NUL CALL :CASE_%SCENARIO% 
 IF ERRORLEVEL 1 CALL :DEFAULT_CASE # If label doesn't exist
 ECHO Done.
+cmd-ps.bat
 @echo off
 EXIT /B
 

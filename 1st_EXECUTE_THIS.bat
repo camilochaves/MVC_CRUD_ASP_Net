@@ -18,8 +18,10 @@ rem Running the Tests
 echo Step2: Running the Tests ... 
 timeout 5
 cls
-docker-compose -f docker-compose.yml -f docker-compose-cache.yml up -d Cache
+echo on
+docker-compose -f docker-compose.yml -f docker-compose-cache.yml -f docker-compose-rabbitmq.yml up -d Cache
 dotnet test Tests
+echo off
 
 rem Start Docker-Compose
 :StartDockerCompose
@@ -27,17 +29,7 @@ echo Press any key to start docker-compose for the containers...
 timeout 5
 cls
 ECHO ON
-docker-compose -f docker-compose.yml -f docker-compose-cache.yml -f docker-compose-db.yml -f docker-compose-webapp.yml up -d
+docker-compose -f docker-compose.yml -f docker-compose-webapp.yml -f docker-compose-db.yml -f docker-compose-cache.yml  -f docker-compose-rabbitmq.yml up -d --remove-orphans
+cmd-ps.bat
 
-echo off
-echo.
-echo Waiting 10 seconds until MySql Starts properly
-echo and then will check docker logs of the container
-timeout 10
-cls
-echo Check on the Logs if server has started!
-echo off
-docker logs DbMySql
-echo .
-echo If MySqlServer started, EXECUTE FILE ./2nd_UpdateMigrations.bat
 
