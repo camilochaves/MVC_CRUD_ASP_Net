@@ -8,10 +8,7 @@ namespace Application.Services
     {
         private readonly IBus _bus;
 
-        public MassTransitRabbitMqService(IBus bus)
-        {
-            this._bus = bus;
-        }
+        public MassTransitRabbitMqService(IBus bus) => this._bus = bus;
 
         public async Task<bool> SendAsync<T>(T entity, string channel) where T:class
         {
@@ -20,6 +17,8 @@ namespace Application.Services
             await endpoint.Send(entity);
             return true;
         }
+
+        public async void Publish<T>(T entity) where T:class => await _bus.Publish(entity);
 
     }
 }
