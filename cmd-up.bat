@@ -11,7 +11,9 @@ echo 5: Redis Kafka
 echo 6: Redis
 echo 7: RabbitMq
 echo 8: Kafka
-echo Select Scenario: (1 to 8)
+echo 9: MongoDb
+echo 10: MySql
+echo Select Scenario: (1 to 9)
 echo.
 set /p SCENARIO=Enter scenario number 
 
@@ -50,17 +52,27 @@ EXIT /B
     GOTO END_CASE
 :CASE_6
     ECHO ON
-    docker-compose -f docker-compose.yml -f docker-compose-cache.yml up -d --remove-orphans
+    docker-compose -f docker-compose.yml -f docker-compose-cache.yml up -d 
     ECHO OFF
     GOTO END_CASE
 :CASE_7
     ECHO ON
-    docker-compose -f docker-compose.yml -f docker-compose-rabbitmq.yml up -d --remove-orphans
+    docker-compose -f docker-compose.yml -f docker-compose-rabbitmq.yml up 
     ECHO OFF
     GOTO END_CASE
 :CASE_8
     ECHO ON
-    docker-compose -f docker-compose.yml -f docker-compose-kafka.yml up -d --remove-orphans
+    docker-compose -f docker-compose.yml -f docker-compose-kafka.yml up -d 
+    ECHO OFF
+    GOTO END_CASE
+:CASE_9
+    ECHO ON
+    docker-compose -f docker-compose.yml -f docker-compose-mongo.yml up -d
+    ECHO OFF
+    GOTO END_CASE
+:CASE_10
+    ECHO ON
+    docker-compose -f docker-compose.yml -f docker-compose-db.yml up -d
     ECHO OFF
     GOTO END_CASE
 :DEFAULT_CASE

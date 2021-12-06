@@ -661,6 +661,20 @@
 					"response": []
 				}
 			]
+		},
+		{
+			"name": "Message Controller",
+			"item": [
+				{
+					"name": "Send",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": null
+					},
+					"response": []
+				}
+			]
 		}
 	]
 }
