@@ -28,7 +28,8 @@ namespace Application
 
             services.ConfigControllers();
             services.ConfigAuthenticationsAndAuthorizationServices();
-            services.ConfigCustomDbContext();
+            //services.ConfigCustomDbContext();
+            services.ConfigCustomMongoContext();
             services.ConfigCustomSwagger();
             services.ConfigCustomValidators();
 

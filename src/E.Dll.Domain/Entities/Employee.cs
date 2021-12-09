@@ -1,10 +1,9 @@
-using System.Collections.Generic;
-using System.ComponentModel.DataAnnotations;
-using System.ComponentModel.DataAnnotations.Schema;
+using MongoDB.Bson;
+using MongoDB.Bson.Serialization.Attributes;
 
 namespace Domain.Entities
 {
-  public class Employee 
+    public class Employee 
   {
     public Employee(string firstName,
                     string lastName,
@@ -19,35 +18,28 @@ namespace Domain.Entities
       EmployeeNumber = employeeNumber;
       this.Status = EmployeeStatus.CREATED;
     }
-    //[Key]
+    [BsonId]
+    [BsonRepresentation(BsonType.Int32)]
     public int Id { get; set; }
-    //[Required]
-    //[StringLength(10,MinimumLength =3)]
-    //[DataType(DataType.Text)]
+
+    [BsonRequired]
     public string FirstName { get; set; }
-    //[Required]
-    //[StringLength(150,MinimumLength =3)]
-    //[DataType(DataType.Text)]
+
+    [BsonRequired]
     public string LastName { get; set; }
-    //[Required]
-    //[StringLength(50, MinimumLength = 3)]
-    //[DataType(DataType.EmailAddress)]
+
+    [BsonRequired]
     public string Email { get; set; }
-    //[Required]
-    //[StringLength(100)]
-    //[DataType(DataType.Password)]
+
+    [BsonRequired]
     public string Password { get; set; }
-    //[Required]
+
+    [BsonRequired]
     public int EmployeeNumber { get; set; }
-    //[StringLength(15)]
-    //[DataType(DataType.Text)]
+
     public string? Phone { get; set; }
-    //[StringLength(15)]
-    //[DataType(DataType.Text)]
     public string? MobilePhone { get; set; }
     public int? LeaderId { get; set; }
-
-    //[ForeignKey("LeaderId")]
     public Employee? Leader { get; set; }
     public EmployeeStatus Status { get; set; } = EmployeeStatus.CREATED;
     }

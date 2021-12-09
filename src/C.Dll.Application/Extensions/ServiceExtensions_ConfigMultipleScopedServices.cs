@@ -2,7 +2,7 @@ using Application.InputModels;
 using Application.Services;
 using Application.Services.Interfaces;
 using Domain.Interfaces;
-using Infra.EFCore.Persistence;
+using Infra.MongoDb;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using ReasonSystems.DLL.SwissKnife;

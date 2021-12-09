@@ -27,27 +27,27 @@ EXIT /B
 
 :CASE_1
     ECHO ON
-    docker-compose -f docker-compose.yml -f docker-compose-webapp.yml -f docker-compose-db.yml -f docker-compose-cache.yml  -f docker-compose-rabbitmq.yml  -f docker-compose-kafka.yml up -d --remove-orphans
+    docker-compose -f docker-compose.yml -f docker-compose-webapp.yml -f docker-compose-db.yml -f docker-compose-cache.yml  -f docker-compose-rabbitmq.yml  -f docker-compose-kafka.yml up -d 
     ECHO OFF
     GOTO END_CASE
 :CASE_2
     ECHO ON
-    docker-compose -f docker-compose.yml -f docker-compose-db.yml -f docker-compose-cache.yml  -f docker-compose-rabbitmq.yml  -f docker-compose-kafka.yml up -d --remove-orphans
+    docker-compose -f docker-compose.yml -f docker-compose-db.yml -f docker-compose-cache.yml  -f docker-compose-rabbitmq.yml  -f docker-compose-kafka.yml up -d 
     ECHO OFF
     GOTO END_CASE
 :CASE_3
     ECHO ON
-    docker-compose -f docker-compose.yml -f docker-compose-db.yml -f docker-compose-cache.yml  -f docker-compose-rabbitmq.yml up -d --remove-orphans
+    docker-compose -f docker-compose.yml -f docker-compose-db.yml -f docker-compose-cache.yml  -f docker-compose-rabbitmq.yml up -d 
     ECHO OFF
     GOTO END_CASE
 :CASE_4
     ECHO ON
-    docker-compose -f docker-compose.yml -f docker-compose-cache.yml  -f docker-compose-rabbitmq.yml up -d --remove-orphans
+    docker-compose -f docker-compose.yml -f docker-compose-cache.yml  -f docker-compose-rabbitmq.yml up -d 
     ECHO OFF
     GOTO END_CASE
 :CASE_5
     ECHO ON
-    docker-compose -f docker-compose.yml -f docker-compose-cache.yml  -f docker-compose-kafka.yml up -d --remove-orphans
+    docker-compose -f docker-compose.yml -f docker-compose-cache.yml  -f docker-compose-kafka.yml up -d 
     ECHO OFF
     GOTO END_CASE
 :CASE_6
@@ -57,7 +57,7 @@ EXIT /B
     GOTO END_CASE
 :CASE_7
     ECHO ON
-    docker-compose -f docker-compose.yml -f docker-compose-rabbitmq.yml up 
+    docker-compose -f docker-compose.yml -f docker-compose-rabbitmq.yml up -d
     ECHO OFF
     GOTO END_CASE
 :CASE_8

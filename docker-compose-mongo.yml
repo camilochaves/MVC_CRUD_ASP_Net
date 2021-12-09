@@ -6,8 +6,12 @@ services:
     image: mongo
     restart: always
     container_name: mongo
+    ports:
+      - "27017-27019:27017-27019"
+    expose:
+      - "27017-27019"
     environment:
-      MONGO_INITDB_ROOT_USERNAME: root
+      MONGO_INITDB_ROOT_USERNAME: camilo
       MONGO_INITDB_ROOT_PASSWORD: password
     networks:
       - host
@@ -17,13 +21,27 @@ services:
     restart: always
     container_name: mongo-express
     ports:
-      - 8086:8081
+      - "8086:8081"
     environment:
       ME_CONFIG_MONGODB_ENABLE_ADMIN: "true"
       ME_CONFIG_MONGODB_ADMINUSERNAME: root
       ME_CONFIG_MONGODB_ADMINPASSWORD: password
       ME_CONFIG_BASICAUTH_USERNAME: user #web access
       ME_CONFIG_BASICAUTH_PASSWORD: password #web password
-      ME_CONFIG_MONGODB_URL: mongodb://root:password@mongo:27017/
+      ME_CONFIG_MONGODB_URL: mongodb://camilo:password@mongo:27017/
+    networks:
+      - host
+
+  mongo-express-cloud:
+    image: mongo-express
+    restart: always
+    container_name: mongo-express-cloud
+    ports:
+      - "8087:8081"
+    environment:
+      ME_CONFIG_MONGODB_ENABLE_ADMIN: "false"
+      ME_CONFIG_BASICAUTH_USERNAME: user #web access
+      ME_CONFIG_BASICAUTH_PASSWORD: password #web password
+      ME_CONFIG_MONGODB_URL: mongodb://camilo:X3rbL2rY51NVnC4n@cluster0-shard-00-00.1l9gv.mongodb.net:27017,cluster0-shard-00-01.1l9gv.mongodb.net:27017,cluster0-shard-00-02.1l9gv.mongodb.net:27017/sample_mflix?ssl=true&replicaSet=Cluster0-shard-0&authSource=admin&retryWrites=true&w=majority     
     networks:
       - host

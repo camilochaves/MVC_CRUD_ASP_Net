@@ -27,8 +27,8 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\D.Dll.Infra.EFCore\Infra.EFCore.csproj" />
     <ProjectReference Include="..\External.Dll.SwissKnife\SwissKnife.csproj" />
+    <ProjectReference Include="..\D.Dll.Infra.MongoDb\D.Dll.Infra.MongoDb.csproj" />
   </ItemGroup>
 
 
