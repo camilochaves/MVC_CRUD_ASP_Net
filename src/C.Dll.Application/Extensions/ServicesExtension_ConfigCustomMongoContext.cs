@@ -1,4 +1,3 @@
-using Infra.MongoDb;
 using Microsoft.Extensions.DependencyInjection;
 using ReasonSystems.DLL.SwissKnife;
 
@@ -13,7 +12,7 @@ namespace Application.Extensions
       var secretsHandler = scope.ServiceProvider.GetRequiredService<SecretsHandlerService>();
       var container = SecretsHandlerService.GetFromEnv("DOTNET_RUNNING_IN_CONTAINER");
 
-      services.AddScoped<MongoContext>();
+      //services.AddScoped<MongoContext>();
       
       return services;
     }
