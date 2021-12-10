@@ -1,11 +1,13 @@
 <Project Sdk="Microsoft.NET.Sdk">
 
-  <ItemGroup>
-    <ProjectReference Include="..\E.Dll.Domain\Dll_Domain.csproj" />
-  </ItemGroup>
+	<ItemGroup>
+		<ProjectReference Include="..\E.Dll.Domain\Dll_Domain.csproj" />
+		<PackageReference Include="Dapper" Version="2.0.35" />
+		<PackageReference Include="Dapper.Contrib" Version="2.0.35" />
+	</ItemGroup>
 
-  <PropertyGroup>
-    <TargetFramework>net5.0</TargetFramework>
-  </PropertyGroup>
+	<PropertyGroup>
+		<TargetFramework>net5.0</TargetFramework>
+	</PropertyGroup>
 
 </Project>

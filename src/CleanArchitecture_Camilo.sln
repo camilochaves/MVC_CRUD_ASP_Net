@@ -15,11 +15,11 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Dll_Domain", "E.Dll.Domain\
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SwissKnife", "External.Dll.SwissKnife\SwissKnife.csproj", "{FEAE7976-3CB2-4E1F-85F8-06CFF4607FEF}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Consumer", "Consumer\Consumer.csproj", "{4A8F8BC6-BEB7-49BC-9FF6-A1605676639E}"
-EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "D.Dll.Infra.MongoDb", "D.Dll.Infra.MongoDb\D.Dll.Infra.MongoDb.csproj", "{DF70E799-2550-44BF-860F-3A13FD777781}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "D.Dll.Infra.Dapper", "D.Dll.Infra.Dapper\D.Dll.Infra.Dapper.csproj", "{BA3655F5-8CBD-4451-9B6A-127D9263C62D}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Consumer", "MassTransit_RabbitMq_Consumer\Consumer.csproj", "{3FE54C14-F883-46AA-A69E-E513DE95EE6E}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -54,10 +54,6 @@ Global
 		{FEAE7976-3CB2-4E1F-85F8-06CFF4607FEF}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{FEAE7976-3CB2-4E1F-85F8-06CFF4607FEF}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{FEAE7976-3CB2-4E1F-85F8-06CFF4607FEF}.Release|Any CPU.Build.0 = Release|Any CPU
-		{4A8F8BC6-BEB7-49BC-9FF6-A1605676639E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{4A8F8BC6-BEB7-49BC-9FF6-A1605676639E}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{4A8F8BC6-BEB7-49BC-9FF6-A1605676639E}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{4A8F8BC6-BEB7-49BC-9FF6-A1605676639E}.Release|Any CPU.Build.0 = Release|Any CPU
 		{DF70E799-2550-44BF-860F-3A13FD777781}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{DF70E799-2550-44BF-860F-3A13FD777781}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{DF70E799-2550-44BF-860F-3A13FD777781}.Release|Any CPU.ActiveCfg = Release|Any CPU
@@ -66,5 +62,9 @@ Global
 		{BA3655F5-8CBD-4451-9B6A-127D9263C62D}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{BA3655F5-8CBD-4451-9B6A-127D9263C62D}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{BA3655F5-8CBD-4451-9B6A-127D9263C62D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{3FE54C14-F883-46AA-A69E-E513DE95EE6E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{3FE54C14-F883-46AA-A69E-E513DE95EE6E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{3FE54C14-F883-46AA-A69E-E513DE95EE6E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{3FE54C14-F883-46AA-A69E-E513DE95EE6E}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 EndGlobal
