@@ -1,5 +1,7 @@
 {
   "sdk": {
-    "version": "net5.0"
+    "version": "6.0",
+    "rollForward": "latestMajor",
+    "allowPrerelease": true
   }
 }

@@ -1,6 +1,9 @@
+using System;
 using Consumer;
 using GreenPipes;
 using MassTransit;
+using Microsoft.Extensions.DependencyInjection;
+using Microsoft.Extensions.Hosting;
 
 Microsoft.Extensions.Hosting.IHost host = Host.CreateDefaultBuilder(args)
     .ConfigureServices(services =>

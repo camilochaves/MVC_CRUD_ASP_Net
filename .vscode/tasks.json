@@ -7,7 +7,7 @@
             "type": "process",
             "args": [
                 "build",
-                "${workspaceFolder}/src/A.UI.MVC/CleanMVC.csproj",
+                "${workspaceFolder}/src/MassTransit_RabbitMq_Consumer/Consumer.csproj",
                 "/property:GenerateFullPaths=true",
                 "/consoleloggerparameters:NoSummary"
             ],
@@ -19,7 +19,7 @@
             "type": "process",
             "args": [
                 "publish",
-                "${workspaceFolder}/src/A.UI.MVC/CleanMVC.csproj",
+                "${workspaceFolder}/src/MassTransit_RabbitMq_Consumer/Consumer.csproj",
                 "/property:GenerateFullPaths=true",
                 "/consoleloggerparameters:NoSummary"
             ],
@@ -32,7 +32,7 @@
             "args": [
                 "watch",
                 "run",
-                "${workspaceFolder}/src/A.UI.MVC/CleanMVC.csproj",
+                "${workspaceFolder}/src/MassTransit_RabbitMq_Consumer/Consumer.csproj",
                 "/property:GenerateFullPaths=true",
                 "/consoleloggerparameters:NoSummary"
             ],

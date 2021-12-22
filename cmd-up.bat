@@ -13,7 +13,7 @@ echo 7: RabbitMq
 echo 8: Kafka
 echo 9: MongoDb
 echo 10: MySql
-echo Select Scenario: (1 to 9)
+echo Select Scenario: (1 to 10)
 echo.
 set /p SCENARIO=Enter scenario number 
 
